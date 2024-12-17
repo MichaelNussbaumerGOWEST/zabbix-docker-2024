@@ -81,18 +81,11 @@ services:
       GF_INSTALL_PLUGINS: alexanderzobnin-zabbix-app
       TZ: ${TZ}
     user: "472"
-    volumes:
-      - grafana:/var/lib/grafana
-      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
-      - ./grafana/provisioning:/etc/grafana/provisioning
     depends_on:
       - zabbix-frontend
     networks:
       - network-zabbix
 
-volumes:
-  postgres: {}
-  grafana: {}
 
 networks:
   network-zabbix:
