@@ -45,8 +45,6 @@ services:
     image: ${POSTGRES_IMAGE:-postgres:latest}
     container_name: postgres
     restart: unless-stopped
-    volumes:
-      - postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -63,9 +61,5 @@ services:
       GF_INSTALL_PLUGINS: alexanderzobnin-zabbix-app
       TZ: ${TZ}
     user: "472"
-    volumes:
-      - grafana:/var/lib/grafana
-      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
-      - ./grafana/provisioning:/etc/grafana/provisioning
     depends_on:
       - zabbix-frontend
